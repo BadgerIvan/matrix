@@ -8,11 +8,11 @@
 int create_matrix(int rows, int columns, matrix_t *result) {
   if (rows <= 0 || columns <= 0 || !result) return INVALID_MATRIX;
   double **pointers = (double **)malloc(sizeof(double *) * rows);
-  if (!pointers) return CALCULATION_ERROR;
+  if (!pointers) return MEMORY_ERROR;
   double *matrix = (double *)calloc(rows * columns, sizeof(double));
   if (!matrix) {
     free(pointers);
-    return CALCULATION_ERROR;
+    return MEMORY_ERROR;
   }
   for (int i = 0; i < rows; i++) pointers[i] = matrix + i * columns;
   result->rows = rows;
