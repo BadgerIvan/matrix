@@ -1,5 +1,6 @@
 CC:=gcc
 CFLAGS:=-Wall -Wextra -Werror -Wpedantic -std=c11
+LIBFLAGS:=
 TEST_FLAGS:=-lcheck -lm -lpthread -lsubunit
 GCOV_FLAGS:=-fprofile-arcs -ftest-coverage
 
@@ -12,7 +13,7 @@ endif
 
 AVX:=$(shell lscpu | grep -e "\bavx\b" -o)
 ifeq ($(AVX),avx)
-	CFLAGS+=-mavx
+	LIBFLAGS+=-mavx
 endif
 
 SRC_DIR:=.
@@ -36,7 +37,7 @@ matrix.a: $(OBJECTS)
 	ranlib matrix.a
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(LIBFLAGS) -c $< -o $@
 
 %.gcov.o: %.c
 	$(CC) $(CFLAGS) $(GCOV_FLAGS) -c $< -o $@
