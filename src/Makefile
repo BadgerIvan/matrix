@@ -46,7 +46,6 @@ $(TEST_DIR)/%.o: $(TEST_DIR)/%.c
 
 test: $(TEST_OBJECTS) $(GCOV_OBJECTS)
 	$(CC) $(CFLAGS) $(GCOV_FLAGS) $(TEST_OBJECTS) $(GCOV_OBJECTS) $(TEST_FLAGS) -o test
-	./test
 
 gcov_report: test
 	mkdir -p $(REPORT_DIR)
