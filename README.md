@@ -25,6 +25,7 @@ All operations (except matrix comparison) should return the resulting code:
 - 0 - OK
 - 1 - Error, incorrect matrix
 - 2 - Calculation error (mismatched matrix sizes; matrix for which calculations cannot be performed, etc.)
+- 3 - Memory error
 
 ### Creating matrices (create_matrix)
 
